@@ -18,11 +18,8 @@ body {
 .button a {
   border-radius: 6px;
   padding: 1rem;
-  border-color: black;
+  border-color: white;
   border-width: 2px;
   border-style: solid;
-}
-
-.pocong {
-  display: none;
+  color: white;
 }
