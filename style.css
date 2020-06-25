@@ -14,18 +14,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: blue; */
 }
 .button a {
-  /* color: white; */
-  /* text-align: center; */
   border-radius: 6px;
   padding: 1rem;
-  /* border-color: black;
+  border-color: black;
   border-width: 2px;
-  border-style: solid; */
-
-  /* box-shadow: 12px -12px 10px rgba(0, 0, 0, 0.4); */
+  border-style: solid;
 }
 
 .pocong {
