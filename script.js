@@ -1,8 +1,7 @@
 const body = document.querySelector('body');
 const button = document.querySelector('.button');
 const anchor = document.querySelector('a');
-const pocong =
-  'url(https://4.bp.blogspot.com/-aO3xYZpTOpw/WC8ah0S_f4I/AAAAAAAAAHE/2hBS2i8BAfQdsy5QwNMbGc_4eAJJMzScwCLcB/s1600/hantu%2Bpocong%2Bmenyeramkan.jpg)';
+const pocong = 'url(pocong.jpg)';
 const colors = [
   'Salmon',
   'Coral',
