@@ -4,46 +4,57 @@ const anchor = document.querySelector('a');
 const pocong = 'url(pocong.jpg)';
 const colors = [
   'Salmon',
-  'Coral',
   'Teal',
+  'Violet',
   'Maroon',
-  'Hotpink',
-  'Orange',
+  'Gold',
+  'Dodgerblue',
   'Chartreuse',
   pocong,
 ];
-
-const darkColor = ['Salmon', 'Coral', 'Teal', 'Maroon', pocong];
-const lightColor = ['Hotpink', 'Orange', 'Chartreuse'];
+const darkColor = ['Dodgerblue', 'Teal', 'Maroon', pocong];
 let colorClicked = [...colors];
 
-body.style.backgroundColor = 'Salmon';
+body.style.backgroundColor = 'Royalblue';
 button.addEventListener('click', changeBackground);
+button.addEventListener('click', borderColor);
+button.addEventListener('click', currentColor);
 
-function changeBackground() {
-  const colorIndex =
-    colorClicked[Math.floor(Math.random() * colorClicked.length)];
-  for (let i of colorClicked) {
-    const index = colorClicked.indexOf(i);
-    if (colorClicked.length === 1) {
-      colorClicked = [...colors];
-    } else if (colorIndex === i) {
-      colorClicked.splice(index, 1);
-      break;
-    }
+//set current to the first index of colors
+function currentColor() {
+  const current = colorClicked[0];
+  return current;
+}
+
+//prevent same color
+function preventDouble() {
+  const index = colorClicked.indexOf(currentColor());
+  const deletedColor = colorClicked.splice(index, 1);
+  //reset color to default if length === 0
+  if (colorClicked.length === 0) {
+    colorClicked = [...colors];
   }
-  body.style.background = colorIndex;
+}
+
+//change background to current color
+function changeBackground() {
+  preventDouble();
+  //set background color
+  body.style.background = currentColor();
   body.style.backgroundRepeat = 'no-repeat';
   body.style.backgroundPosition = 'center';
   body.style.backgroundSize = 'auto 100%';
-  if (colorIndex === pocong) {
-    anchor.innerHTML = 'Mweheheh :)';
-  }
-  if (colorIndex !== pocong) {
-    anchor.innerHTML = 'Click me & Find Black!';
-  }
+
+  //set text inside the a tag
+  changeButtonText(currentColor(), pocong, 'Mwehehe :p');
+
+  //changing border color to contrast with background color
+  borderColor();
+}
+
+function borderColor() {
   for (let i of darkColor) {
-    if (colorIndex == i) {
+    if (currentColor() === i) {
       anchor.style.borderColor = 'White';
       anchor.style.color = 'White';
       break;
@@ -51,5 +62,21 @@ function changeBackground() {
       anchor.style.borderColor = 'Black';
       anchor.style.color = 'Black';
     }
+  }
+}
+
+function changeButtonText(
+  currentColor,
+  wantedColor,
+  txtIfTrue,
+  defaultTxt = 'Click me & Find Black!'
+) {
+  if (currentColor === wantedColor) {
+    anchor.innerHTML = txtIfTrue;
+    anchor.style.backgroundColor = 'Black';
+  }
+  if (currentColor !== wantedColor) {
+    anchor.innerHTML = defaultTxt;
+    anchor.style.backgroundColor = '';
   }
 }
