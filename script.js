@@ -2,6 +2,7 @@ const body = document.querySelector('body');
 const button = document.querySelector('.button');
 const anchor = document.querySelector('a');
 const pocong = 'url(pocong.jpg)';
+const audio = document.querySelector('.scream');
 const colors = [
   'Salmon',
   'Teal',
@@ -30,6 +31,13 @@ function currentColor() {
 function preventDouble() {
   const index = colorClicked.indexOf(currentColor());
   const deletedColor = colorClicked.splice(index, 1);
+  console.log(
+    currentColor(),
+    index,
+    colorClicked[index],
+    colorClicked,
+    deletedColor
+  );
   //reset color to default if length === 0
   if (colorClicked.length === 0) {
     colorClicked = [...colors];
@@ -74,6 +82,7 @@ function changeButtonText(
   if (currentColor === wantedColor) {
     anchor.innerHTML = txtIfTrue;
     anchor.style.backgroundColor = 'Black';
+    audio.play();
   }
   if (currentColor !== wantedColor) {
     anchor.innerHTML = defaultTxt;
